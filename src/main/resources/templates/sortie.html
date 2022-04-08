@@ -16,30 +16,39 @@
     <div class="col">
       <h2 class="text-center">Gestion des sorties</h2>
       <form th:action="sortie" th:object="${sortie}" method="post">
+      
 <div class="mb-3">
-  <label  class="form-label">titre</label>
+  <label  class="form-label">Titre</label>
   <input type="text" class="form-control" th:field="*{titre}" name="titre"  placeholder="votre titre ici">
 </div>
+
 <div class="mb-3">
-  <label  class="form-label">depart</label>
+  <label  class="form-label">Depart</label>
   <input type="date" class="form-control" th:field="*{depart}" name="depart">
 </div>
+
 <div class="mb-3">
-  <label  class="form-label">retour</label>
-  <input type="date"  class="form-control" th:field="*{retour}" >
+  <label  class="form-label">Retour</label>
+  <input type="date"  class="form-control" th:field="*{retour}" name="retour">
 </div>
+
 <div class="mb-3">
-  <label  class="form-label">description</label>
+  <label  class="form-label">Description</label>
   <textarea class="form-control" th:field="*{description}" name="description"  placeholder="votre description ici"></textarea>
 </div>
+
 <div class="mb-3">
   <label  class="form-label">Responsable</label>
-  
+  <textarea class="form-control" th:field="*{responsable}" name="responsable"></textarea>
+ </div>
+ 
   <select  class="form-control" th:name="nom" >
 <option th:each="ad : ${admins}" th:value="${ad.nomcomplet}" 
        th:text="${ad.nomcomplet}" >
       </option>  
   </select>
+  
+  </form>
 </div>
 <div class="mb-3">
   
@@ -47,8 +56,10 @@
 </div>
 
 
-</form>
-</div>    <div class="col">
+</div>
+</div>    
+
+<div class="col">
       
     </div>
 </body>
