@@ -17,7 +17,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 @EnableWebSecurity
 public class Security extends WebSecurityConfigurerAdapter{
 	@Autowired
-	private DataSource dataSource; // parametre de récupération permanente des résultat de la BD
+	private DataSource dataSource; // paramètres de récupérations permanente des résultat de la BD
 	// format de données object
 	@Autowired
 	private BCryptPasswordEncoder bCryptPasswordEncoder;
@@ -25,9 +25,9 @@ public class Security extends WebSecurityConfigurerAdapter{
 	@Autowired
 	public void configureGlobal(AuthenticationManagerBuilder auth)throws Exception
 	{
-//		auth.inMemoryAuthentication().withUser("myadmin").password("{noop}admin").roles("Admininstrateur");
+		auth.inMemoryAuthentication().withUser("myadmin").password("{noop}admin").roles("Admininstrateur");
 		
-//		auth.inMemoryAuthentication().withUser("myuser").password("{noop}user").roles("utilisateur");
+		// auth.inMemoryAuthentication().withUser("myuser").password("{noop}user").roles("utilisateur");
 		
 		auth.jdbcAuthentication().dataSource(dataSource)
 		.usersByUsernameQuery( // on verifie l'existance de l'élément unique username (email cin, login)
@@ -47,7 +47,7 @@ public class Security extends WebSecurityConfigurerAdapter{
 	http.csrf().disable();
 	http.authorizeRequests().antMatchers("/login/**").permitAll();
 	http.authorizeRequests().antMatchers(HttpMethod.POST, "/CreerEvaluation").hasRole("guide");
-	//http.authorizeRequests().anyRequest().hasRole("orga");
+	// http.authorizeRequests().anyRequest().hasRole("orga");
 	http.authorizeRequests().anyRequest().authenticated();
 	}
 }

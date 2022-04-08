@@ -27,7 +27,7 @@ public class AccountServiceImplement implements AccountService{
 	public Admin saveAdmin(Admin appUser) {
 		// TODO Auto-generated method stub
 		
-				String hashPW=this.getBCPE().encode(appUser.getPassword()); //hashPW = le mot de passe crypté
+				String hashPW=this.getBCPE().encode(appUser.getPassword());
 				System.out.print(hashPW);
 				appUser.setPassword(hashPW);
 				return adminrepository.save(appUser);
